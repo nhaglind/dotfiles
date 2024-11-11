@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#### Dotfiles
+
+Development setup for using Alacritty, Neovim (LazyVim), and Zellij.
+
 echo "Copying Alacritty config..."
 cp -r ~/dotfiles/alacritty ~/.config/alacritty
 
