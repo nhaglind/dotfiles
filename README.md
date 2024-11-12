@@ -42,6 +42,7 @@ My personal development environment configurations featuring Alacritty, Neovim (
 - Custom plugins configuration in `nvim/lua/plugins`
 - Key mappings and options in `nvim/lua/config`
 - Uses LazyVim as the base configuration
+- Includes specific Rails plugins
 
 ### Alacritty
 - Modern terminal configuration
