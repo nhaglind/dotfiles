@@ -1,5 +1,58 @@
 #!/bin/bash
 
+update_readme() {
+  local readme="$HOME/dotfiles/README.md"
+  local nvim_plugins=$(grep "requires" ~/.config/nvim/lazy-lock.json | sed 's/"requires"://g' | tr -d '{}[],"' | sort | uniq)
+
+  # Create/update README.md
+  cat >"$readme" <<EOF
+# Dotfiles
+
+Personal development environment configurations.
+
+## Installation
+
+\`\`\`bash
+git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+chmod +x ~/dotfiles/dotfiles.sh
+
+# Install dotfiles (creates backups of existing configs)
+./dotfiles.sh -i
+
+# Update repository with current configs
+./dotfiles.sh -u
+\`\`\`
+
+## Contents
+
+### Neovim (LazyVim)
+$(if [ -f ~/.config/nvim/lazy-lock.json ]; then
+    echo "Current plugins:"
+    echo "\`\`\`"
+    cat ~/.config/nvim/lazy-lock.json | grep "\"" | cut -d'"' -f2 | sort | sed 's/^/- /'
+    echo "\`\`\`"
+  fi)
+
+### Alacritty
+Terminal emulator configuration
+
+### Zellij
+Terminal multiplexer configuration
+
+## Requirements
+
+- Neovim >= 0.9.0
+- Git
+- Alacritty
+- Zellij
+
+## Notes
+
+- Configs are backed up with .bak extension before installation
+- Update script (-u) creates timestamped commits
+EOF
+}
+
 # Show usage if no argument is provided or if it's not -u or -i
 usage() {
   echo "Usage: $0 [-u|-i]"
@@ -32,6 +85,10 @@ case $1 in
 
   echo "Copying Zellij config..."
   cp -r ~/.config/zellij/* ~/dotfiles/zellij/
+
+  # Update README
+  echo "Updating README..."
+  update_readme
 
   # Git operations
   echo "Updating git repository..."

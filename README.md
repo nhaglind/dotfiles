@@ -1,68 +1,88 @@
-## 🚀 Dotfiles
+# Dotfiles
 
-My personal development environment configurations featuring Alacritty, Neovim (LazyVim), and Zellij.
+Personal development environment configurations.
 
-## 📦 What's Inside
+## Installation
 
-- **Alacritty**: A fast, GPU-accelerated terminal emulator
-- **Neovim**: Highly extensible text editor with LazyVim configuration
-- **Zellij**: Terminal workspace with multiplexer capabilities
+```bash
+git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+chmod +x ~/dotfiles/dotfiles.sh
 
-## 🛠️ Requirements
+# Install dotfiles (creates backups of existing configs)
+./dotfiles.sh -i
 
-- Git
+# Update repository with current configs
+./dotfiles.sh -u
+```
+
+## Contents
+
+### Neovim (LazyVim)
+Current plugins:
+```
+- LazyVim
+- ayu
+- bufferline.nvim
+- catppuccin
+- cmp-buffer
+- cmp-nvim-lsp
+- cmp-path
+- conform.nvim
+- dashboard-nvim
+- dressing.nvim
+- flash.nvim
+- friendly-snippets
+- gitsigns.nvim
+- grug-far.nvim
+- gruvbox.nvim
+- indent-blankline.nvim
+- lazy.nvim
+- lazydev.nvim
+- lualine.nvim
+- luvit-meta
+- mason-lspconfig.nvim
+- mason.nvim
+- mini.ai
+- mini.icons
+- mini.pairs
+- neo-tree.nvim
+- noice.nvim
+- nui.nvim
+- nvim-cmp
+- nvim-lint
+- nvim-lspconfig
+- nvim-snippets
+- nvim-treesitter
+- nvim-treesitter-textobjects
+- nvim-ts-autotag
+- persistence.nvim
+- plenary.nvim
+- snacks.nvim
+- telescope-fzf-native.nvim
+- telescope.nvim
+- todo-comments.nvim
+- tokyonight.nvim
+- trouble.nvim
+- ts-comments.nvim
+- vim-rails
+- vim-surround
+- which-key.nvim
+```
+
+### Alacritty
+Terminal emulator configuration
+
+### Zellij
+Terminal multiplexer configuration
+
+## Requirements
+
 - Neovim >= 0.9.0
+- Git
 - Alacritty
 - Zellij
 
-## 🚀 Quick Start
+## Notes
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/nhaglind/dotfiles.git ~/dotfiles
-   ```
-
-2. Make the setup script executable:
-   ```bash
-   chmod +x ~/dotfiles/dotfiles.sh
-   ```
-
-3. Use the script to manage your dotfiles:
-   ```bash
-   # Install dotfiles to your system (creates backups of existing configs)
-   ./dotfiles.sh -i
-
-   # Update repository with your current configs
-   ./dotfiles.sh -u
-   ```
-
-## ⚙️ Configuration Details
-
-### Neovim Setup (LazyVim)
-- Custom plugins configuration in `nvim/lua/plugins`
-- Key mappings and options in `nvim/lua/config`
-- Uses LazyVim as the base configuration
-- Includes specific Rails plugins
-
-### Alacritty
-- Modern terminal configuration
-- Custom color schemes
-- Performance-focused settings
-
-### Zellij
-- Terminal multiplexer configuration
-- Custom layouts and keybindings
-- Session management settings
-
-## 🔄 Updating
-
-The dotfiles can be easily updated using the provided script. It will automatically:
-- Copy your current configurations to the repository
-- Create a timestamped commit
-- Remind you to push changes
-
-## 📝 Notes
-
-- Existing configurations are automatically backed up with `.bak` extension
-- The update script (`-u`) will create a git commit with timestamp
-- Remember to `git push` after updating to sync with remote repository
+- Configs are backed up with .bak extension before installation
+- Update script (-u) creates timestamped commits
