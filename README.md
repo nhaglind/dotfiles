@@ -34,7 +34,6 @@ Current plugins:
 - friendly-snippets
 - gitsigns.nvim
 - grug-far.nvim
-- gruvbox.nvim
 - indent-blankline.nvim
 - lazy.nvim
 - lazydev.nvim
