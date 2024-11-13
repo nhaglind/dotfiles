@@ -5,7 +5,7 @@ Personal development environment configurations.
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/nhaglind/dotfiles.git ~/dotfiles
 chmod +x ~/dotfiles/dotfiles.sh
 
 # Install dotfiles (creates backups of existing configs)
