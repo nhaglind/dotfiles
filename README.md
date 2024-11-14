@@ -21,6 +21,7 @@ chmod +x ~/dotfiles/dotfiles.sh
 Current plugins:
 ```
 - LazyVim
+- SchemaStore.nvim
 - ayu
 - bufferline.nvim
 - catppuccin
@@ -39,11 +40,13 @@ Current plugins:
 - lazydev.nvim
 - lualine.nvim
 - luvit-meta
+- markdown-preview.nvim
 - mason-lspconfig.nvim
 - mason.nvim
 - mini.ai
 - mini.icons
 - mini.pairs
+- mini.surround
 - neo-tree.nvim
 - noice.nvim
 - nui.nvim
@@ -56,6 +59,8 @@ Current plugins:
 - nvim-ts-autotag
 - persistence.nvim
 - plenary.nvim
+- render-markdown.nvim
+- ror.nvim
 - snacks.nvim
 - telescope-fzf-native.nvim
 - telescope.nvim
@@ -66,6 +71,7 @@ Current plugins:
 - vim-rails
 - vim-surround
 - which-key.nvim
+- yanky.nvim
 ```
 
 ### Alacritty
@@ -80,6 +86,7 @@ Terminal multiplexer configuration
 - Git
 - Alacritty
 - Zellij
+- Ripgrep
 
 ## Notes
 

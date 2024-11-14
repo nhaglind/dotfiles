@@ -45,6 +45,7 @@ Terminal multiplexer configuration
 - Git
 - Alacritty
 - Zellij
+- Ripgrep
 
 ## Notes
 
