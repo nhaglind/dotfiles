@@ -17,4 +17,4 @@ italic = { family = "FiraCode Nerd Font", style = "Italic" }
 
 [shell]
   program = "/bin/zsh"
-  args = ["-l", "-c", "zellij"]
+  args = ["-l", "-c", "zellij --layout ~/.config/zellij/layout.kdl || zellij"]
