@@ -4,7 +4,6 @@
 
 vim.opt.fixeol = true -- Automatically add newline at end of file
 vim.opt.expandtab = true -- Convert tabs to spaces
-vim.opt.trimtrailing = true -- Trim trailing whitespace
 
 -- If you want to configure formatting options more broadly:
 vim.g.autoformat = true -- Keep LazyVim's automatic formatting enabled
