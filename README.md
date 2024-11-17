@@ -2,6 +2,9 @@
 
 Personal development environment configurations.
 
+<img width="1516" alt="Screenshot 2024-11-16 at 9 08 47 PM" src="https://github.com/user-attachments/assets/7f2ffd67-ad38-4ab0-b10c-ef66b35ca0d0">
+<img width="1516" alt="Screenshot 2024-11-16 at 9 07 06 PM" src="https://github.com/user-attachments/assets/305dadda-11ef-43e9-ab99-819dd03e3c3a">
+
 ## Installation
 
 ```bash
