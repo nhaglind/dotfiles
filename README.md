@@ -91,4 +91,4 @@ Terminal multiplexer configuration
 ## Notes
 
 - Configs are backed up with .bak extension before installation
-- Update script (-u) creates timestamped commits
+

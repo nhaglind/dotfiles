@@ -50,7 +50,7 @@ Terminal multiplexer configuration
 ## Notes
 
 - Configs are backed up with .bak extension before installation
-- Update script (-u) creates timestamped commits
+
 EOF
 }
 
@@ -95,8 +95,7 @@ case $1 in
   echo "Updating git repository..."
   cd ~/dotfiles
   git add .
-  date=$(date '+%Y-%m-%d %H:%M:%S')
-  git commit -m "Update dotfiles - $date"
+  git commit -m "Update dotfiles"
 
   echo "Dotfiles have been backed up and committed!"
   echo "Don't forget to 'git push' if you want to update the remote repository."

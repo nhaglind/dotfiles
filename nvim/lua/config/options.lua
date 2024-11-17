@@ -1,9 +1,18 @@
 -- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Default options: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.opt.fixeol = true -- Automatically add newline at end of file
-vim.opt.expandtab = true -- Convert tabs to spaces
+-- Automatically add newline at end of file
+vim.opt.fixeol = true
 
--- If you want to configure formatting options more broadly:
-vim.g.autoformat = true -- Keep LazyVim's automatic formatting enabled
+-- Convert tabs to spaces
+vim.opt.expandtab = true
+
+-- Keep LazyVim's automatic formatting enabled
+vim.g.autoformat = true
+
+-- Disable undo files (stop unlimited undo across sessions)
+vim.opt.undofile = false
+
+-- Disable swap files
+vim.opt.swapfile = false
