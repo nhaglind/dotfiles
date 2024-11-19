@@ -29,13 +29,13 @@ Current plugins:
 - cmp-nvim-lsp
 - cmp-path
 - conform.nvim
-- dashboard-nvim
 - dressing.nvim
 - flash.nvim
 - friendly-snippets
 - gitsigns.nvim
 - grug-far.nvim
 - indent-blankline.nvim
+- kdl.vim
 - lazy.nvim
 - lazydev.nvim
 - lualine.nvim

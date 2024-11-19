@@ -3,7 +3,6 @@
 -- Add any additional keymaps here
 
 local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
 
 -- Quick save with 'ss' in normal mode
 keymap.set("n", "ss", ":w<CR>", { desc = "Save file" })
