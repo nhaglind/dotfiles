@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BACKUP=true
+
 update_readme() {
   local readme="$HOME/dotfiles/README.md"
   local nvim_plugins=$(grep "requires" ~/.config/nvim/lazy-lock.json | sed 's/"requires"://g' | tr -d '{}[],"' | sort | uniq)
@@ -16,8 +18,11 @@ Personal development environment configurations.
 git clone https://github.com/nhaglind/dotfiles.git ~/dotfiles
 chmod +x ~/dotfiles/dotfiles.sh
 
-# Install dotfiles (creates backups of existing configs)
+# Install dotfiles (creates backups of existing configs by default)
 ./dotfiles.sh -i
+
+# Install without backups
+./dotfiles.sh -i --no-backup
 
 # Update repository with current configs
 ./dotfiles.sh -u
@@ -49,27 +54,47 @@ Terminal multiplexer configuration
 
 ## Notes
 
-- Configs are backed up with .bak extension before installation
-
+- Configs are backed up with .bak extension before installation by default.
 EOF
 }
 
-# Show usage if no argument is provided or if it's not -u or -i
+# Show usage if no valid argument is provided
 usage() {
-  echo "Usage: $0 [-u|-i]"
-  echo "  -u    Update dotfiles repo with current configs"
-  echo "  -i    Install configs from dotfiles repo"
+  echo "Usage: $0 [-u|-i] [--no-backup]"
+  echo "  -u             Update dotfiles repo with current configs"
+  echo "  -i [--no-backup] Install configs from dotfiles repo (skip backups with --no-backup)"
   exit 1
 }
 
-# Check if exactly one argument is provided
-if [ $# -ne 1 ]; then
+# Process arguments
+ACTION=""
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  -u)
+    ACTION="update"
+    shift
+    ;;
+  -i)
+    ACTION="install"
+    shift
+    ;;
+  --no-backup)
+    BACKUP=false
+    shift
+    ;;
+  *)
+    usage
+    ;;
+  esac
+done
+
+# Ensure an action was specified
+if [ -z "$ACTION" ]; then
   usage
 fi
 
-# Process based on flag
-case $1 in
--u)
+case $ACTION in
+update)
   echo "Updating dotfiles repository..."
 
   # Create directories if they don't exist
@@ -100,27 +125,28 @@ case $1 in
   echo "Dotfiles have been backed up and committed!"
   echo "Don't forget to 'git push' if you want to update the remote repository."
   ;;
-
--i)
+install)
   echo "Installing configs from dotfiles repo..."
 
   # Create .config if it doesn't exist
   mkdir -p ~/.config
 
-  # Backup existing configs if they exist
-  if [ -d ~/.config/alacritty ]; then
-    echo "Backing up existing Alacritty config..."
-    mv ~/.config/alacritty ~/.config/alacritty.bak
-  fi
+  # Backup existing configs if BACKUP is true
+  if $BACKUP; then
+    if [ -d ~/.config/alacritty ]; then
+      echo "Backing up existing Alacritty config..."
+      mv ~/.config/alacritty ~/.config/alacritty.bak
+    fi
 
-  if [ -d ~/.config/nvim ]; then
-    echo "Backing up existing Neovim config..."
-    mv ~/.config/nvim ~/.config/nvim.bak
-  fi
+    if [ -d ~/.config/nvim ]; then
+      echo "Backing up existing Neovim config..."
+      mv ~/.config/nvim ~/.config/nvim.bak
+    fi
 
-  if [ -d ~/.config/zellij ]; then
-    echo "Backing up existing Zellij config..."
-    mv ~/.config/zellij ~/.config/zellij.bak
+    if [ -d ~/.config/zellij ]; then
+      echo "Backing up existing Zellij config..."
+      mv ~/.config/zellij ~/.config/zellij.bak
+    fi
   fi
 
   # Copy configs from dotfiles
@@ -134,9 +160,12 @@ case $1 in
   cp -r ~/dotfiles/zellij ~/.config/zellij
 
   echo "Dotfiles have been installed to ~/.config!"
-  echo "Previous configs (if any) were backed up with .bak extension"
+  if $BACKUP; then
+    echo "Previous configs (if any) were backed up with .bak extension"
+  else
+    echo "Backups were skipped as requested."
+  fi
   ;;
-
 *)
   usage
   ;;

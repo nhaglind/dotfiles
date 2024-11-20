@@ -8,8 +8,11 @@ Personal development environment configurations.
 git clone https://github.com/nhaglind/dotfiles.git ~/dotfiles
 chmod +x ~/dotfiles/dotfiles.sh
 
-# Install dotfiles (creates backups of existing configs)
+# Install dotfiles (creates backups of existing configs by default)
 ./dotfiles.sh -i
+
+# Install without backups
+./dotfiles.sh -i --no-backup
 
 # Update repository with current configs
 ./dotfiles.sh -u
@@ -90,5 +93,4 @@ Terminal multiplexer configuration
 
 ## Notes
 
-- Configs are backed up with .bak extension before installation
-
+- Configs are backed up with .bak extension before installation by default.
