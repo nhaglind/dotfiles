@@ -1,25 +1,19 @@
 # Dotfiles
-
 Personal development environment configurations.
-
 ## Installation
-
 ```bash
 git clone https://github.com/nhaglind/dotfiles.git ~/dotfiles
 chmod +x ~/dotfiles/dotfiles.sh
-
 # Install dotfiles (creates backups of existing configs by default)
 ./dotfiles.sh -i
-
 # Install without backups
 ./dotfiles.sh -i --no-backup
-
 # Update repository with current configs
 ./dotfiles.sh -u
+# Include zshrc in operations
+./dotfiles.sh -u --zshrc
 ```
-
 ## Contents
-
 ### Neovim (LazyVim)
 Current plugins:
 ```
@@ -76,21 +70,15 @@ Current plugins:
 - which-key.nvim
 - yanky.nvim
 ```
-
 ### Alacritty
 Terminal emulator configuration
-
 ### Zellij
 Terminal multiplexer configuration
-
 ## Requirements
-
 - Neovim >= 0.9.0
 - Git
 - Alacritty
 - Zellij
 - Ripgrep
-
 ## Notes
-
 - Configs are backed up with .bak extension before installation by default.
