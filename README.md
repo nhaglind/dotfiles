@@ -69,6 +69,7 @@ Current plugins:
 - tokyonight.nvim
 - trouble.nvim
 - ts-comments.nvim
+- vim-bundler
 - vim-rails
 - vim-surround
 - which-key.nvim

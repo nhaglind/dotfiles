@@ -9,10 +9,13 @@ vim.opt.fixeol = true
 vim.opt.expandtab = true
 
 -- Keep LazyVim's automatic formatting enabled
-vim.g.autoformat = true
+vim.g.autoformat = false
 
 -- Disable undo files (stop unlimited undo across sessions)
 vim.opt.undofile = false
 
 -- Disable swap files
 vim.opt.swapfile = false
+
+-- Disable macro recording
+vim.keymap.set("n", "q", "<nop>")
