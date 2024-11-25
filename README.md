@@ -19,7 +19,6 @@ Current plugins:
 ```
 - LazyVim
 - SchemaStore.nvim
-- avante.nvim
 - ayu
 - bufferline.nvim
 - catppuccin
@@ -27,13 +26,11 @@ Current plugins:
 - cmp-nvim-lsp
 - cmp-path
 - conform.nvim
-- copilot.lua
 - dressing.nvim
 - flash.nvim
 - friendly-snippets
 - gitsigns.nvim
 - grug-far.nvim
-- img-clip.nvim
 - indent-blankline.nvim
 - kdl.vim
 - lazy.nvim
@@ -57,7 +54,6 @@ Current plugins:
 - nvim-treesitter
 - nvim-treesitter-textobjects
 - nvim-ts-autotag
-- nvim-web-devicons
 - persistence.nvim
 - plenary.nvim
 - render-markdown.nvim
