@@ -8,7 +8,7 @@ vim.opt.fixeol = true
 -- Convert tabs to spaces
 vim.opt.expandtab = true
 
--- Keep LazyVim's automatic formatting enabled
+-- Keep LazyVim's automatic formatting disabled
 vim.g.autoformat = false
 
 -- Disable undo files (stop unlimited undo across sessions)
