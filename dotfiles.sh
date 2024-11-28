@@ -91,10 +91,10 @@ case $ACTION in
 update)
   echo "Updating dotfiles repository..."
   mkdir -p ~/dotfiles/.config
-  cp -r ~/.config/alacritty ~/dotfiles/.config/
-  cp -r ~/.config/nvim ~/dotfiles/.config/
-  cp -r ~/.config/btop ~/dotfiles/.config/
-  cp -r ~/.config/zellij ~/dotfiles/.config/
+  rsync -a --exclude ".git" ~/.config/alacritty ~/dotfiles/.config/
+  rsync -a --exclude ".git" ~/.config/nvim ~/dotfiles/.config/
+  rsync -a --exclude ".git" ~/.config/btop ~/dotfiles/.config/
+  rsync -a --exclude ".git" ~/.config/zellij ~/dotfiles/.config/
   cp ~/.gemrc ~/dotfiles/.gemrc
   cp ~/.gitignore ~/dotfiles/.gitignore
   [ "$HANDLE_ZSHRC" = true ] && cp ~/.zshrc ~/dotfiles/.zshrc
@@ -122,10 +122,10 @@ install)
     [ "$HANDLE_ZSHRC" = true ] && [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.bak
   fi
 
-  cp -r ~/dotfiles/.config/alacritty ~/.config/
-  cp -r ~/dotfiles/.config/nvim ~/.config/
-  cp -r ~/dotfiles/.config/btop ~/.config/
-  cp -r ~/dotfiles/.config/zellij ~/.config/
+  rsync -a --exclude ".git" ~/dotfiles/.config/alacritty ~/.config/
+  rsync -a --exclude ".git" ~/dotfiles/.config/nvim ~/.config/
+  rsync -a --exclude ".git" ~/dotfiles/.config/btop ~/.config/
+  rsync -a --exclude ".git" ~/dotfiles/.config/zellij ~/.config/
   cp ~/dotfiles/.gemrc ~/.gemrc
   cp ~/dotfiles/.gitignore ~/.gitignore
   [ "$HANDLE_ZSHRC" = true ] && cp ~/dotfiles/.zshrc ~/.zshrc
