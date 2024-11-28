@@ -5,7 +5,6 @@ HANDLE_ZSHRC=false
 update_readme() {
   local readme="$HOME/dotfiles/README.md"
   local nvim_plugins=$(grep "requires" ~/.config/nvim/lazy-lock.json | sed 's/"requires"://g' | tr -d '{}[],"' | sort | uniq)
-  # Create/update README.md
   cat >"$readme" <<EOF
 # Dotfiles
 Personal development environment configurations.
@@ -86,21 +85,11 @@ fi
 case $ACTION in
 update)
   echo "Updating dotfiles repository..."
-  mkdir -p ~/dotfiles/alacritty
-  mkdir -p ~/dotfiles/nvim
-  mkdir -p ~/dotfiles/btop
-  mkdir -p ~/dotfiles/zellij
-  [ "$HANDLE_ZSHRC" = true ] && mkdir -p ~/dotfiles/zsh
-
-  cp -r ~/.config/alacritty/* ~/dotfiles/alacritty/
-  cp -r ~/.config/nvim/* ~/dotfiles/nvim/
-  cp -r ~/.config/btop/* ~/dotfiles/btop/
-  cp -r ~/.config/zellij/* ~/dotfiles/zellij/
-
-  if [ "$HANDLE_ZSHRC" = true ]; then
-    echo "Copying ZSH config..."
-    cp ~/.zshrc ~/dotfiles/zsh/
-  fi
+  cp -r ~/.config/alacritty ~/dotfiles/
+  cp -r ~/.config/nvim ~/dotfiles/
+  cp -r ~/.config/btop ~/dotfiles/
+  cp -r ~/.config/zellij ~/dotfiles/
+  [ "$HANDLE_ZSHRC" = true ] && cp ~/.zshrc ~/dotfiles/zsh/
 
   echo "Updating README..."
   update_readme
@@ -113,27 +102,19 @@ update)
   ;;
 install)
   echo "Installing configs from dotfiles repo..."
-  mkdir -p ~/.config
-
   if $BACKUP; then
     [ -d ~/.config/alacritty ] && mv ~/.config/alacritty ~/.config/alacritty.bak
     [ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.config/nvim.bak
     [ -d ~/.config/btop ] && mv ~/.config/btop ~/.config/btop.bak
     [ -d ~/.config/zellij ] && mv ~/.config/zellij ~/.config/zellij.bak
-    if [ "$HANDLE_ZSHRC" = true ] && [ -f ~/.zshrc ]; then
-      mv ~/.zshrc ~/.zshrc.bak
-    fi
+    [ "$HANDLE_ZSHRC" = true ] && [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.bak
   fi
 
-  cp -r ~/dotfiles/alacritty ~/.config/alacritty
-  cp -r ~/dotfiles/nvim ~/.config/nvim
-  cp -r ~/dotfiles/btop ~/.config/btop
-  cp -r ~/dotfiles/zellij ~/.config/zellij
-
-  if [ "$HANDLE_ZSHRC" = true ]; then
-    echo "Copying ZSH config..."
-    cp ~/dotfiles/zsh/.zshrc ~/.zshrc
-  fi
+  cp -r ~/dotfiles/alacritty ~/.config/
+  cp -r ~/dotfiles/nvim ~/.config/
+  cp -r ~/dotfiles/btop ~/.config/
+  cp -r ~/dotfiles/zellij ~/.config/
+  [ "$HANDLE_ZSHRC" = true ] && cp ~/dotfiles/zsh/.zshrc ~/.zshrc
 
   echo "Dotfiles have been installed!"
   $BACKUP && echo "Previous configs were backed up with .bak extension"
