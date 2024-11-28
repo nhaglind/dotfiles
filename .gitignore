@@ -1,0 +1,12 @@
+# Ignore temporary files
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# Ignore Neovim cache and backup files
+.cache/
+shada/
+
+# Ignore OS-specific files
+.DS_Store

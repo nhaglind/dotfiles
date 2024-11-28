@@ -96,6 +96,7 @@ update)
   cp -r ~/.config/btop ~/dotfiles/.config/
   cp -r ~/.config/zellij ~/dotfiles/.config/
   cp ~/.gemrc ~/dotfiles/.gemrc
+  cp ~/.gitignore ~/dotfiles/.gitignore
   [ "$HANDLE_ZSHRC" = true ] && cp ~/.zshrc ~/dotfiles/.zshrc
 
   echo "Updating README..."
@@ -117,6 +118,7 @@ install)
     [ -d ~/.config/btop ] && mv ~/.config/btop ~/.config/btop.bak
     [ -d ~/.config/zellij ] && mv ~/.config/zellij ~/.config/zellij.bak
     [ -f ~/.gemrc ] && mv ~/.gemrc ~/.gemrc.bak
+    [ -f ~/.gitignore ] && mv ~/.gitignore ~/.gitignore.bak
     [ "$HANDLE_ZSHRC" = true ] && [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.bak
   fi
 
@@ -125,6 +127,7 @@ install)
   cp -r ~/dotfiles/.config/btop ~/.config/
   cp -r ~/dotfiles/.config/zellij ~/.config/
   cp ~/dotfiles/.gemrc ~/.gemrc
+  cp ~/dotfiles/.gitignore ~/.gitignore
   [ "$HANDLE_ZSHRC" = true ] && cp ~/dotfiles/.zshrc ~/.zshrc
 
   echo "Dotfiles have been installed!"
