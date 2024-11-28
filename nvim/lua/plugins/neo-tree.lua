@@ -6,7 +6,11 @@ return {
       local node = state.tree:get_node()
       local path = node:get_id()
       if vim.fn.has("macunix") == 1 then
-        os.execute('open "' .. vim.fn.fnamemodify(path, ":p") .. '"')
+        if vim.fn.isdirectory(path) == 1 then
+          os.execute('open "' .. vim.fn.fnamemodify(path, ":p") .. '"')
+        else
+          os.execute('open -R "' .. vim.fn.fnamemodify(path, ":p") .. '"')
+        end
       else
         print("Opening in Finder is only supported on macOS")
       end
