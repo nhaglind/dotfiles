@@ -59,6 +59,7 @@ Current plugins:
 - render-markdown.nvim
 - ror.nvim
 - snacks.nvim
+- supermaven-nvim
 - telescope-fzf-native.nvim
 - telescope.nvim
 - todo-comments.nvim
@@ -79,6 +80,7 @@ Terminal multiplexer configuration
 - Neovim >= 0.9.0
 - Git
 - Alacritty
+- Btop
 - Zellij
 - Ripgrep
 ## Notes
