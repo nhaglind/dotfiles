@@ -72,10 +72,13 @@ Current plugins:
 - which-key.nvim
 - yanky.nvim
 ```
-### Alacritty
-Terminal emulator configuration
-### Zellij
-Terminal multiplexer configuration
+### .config Folder
+- Alacritty
+- Neovim
+- Zellij
+- Btop
+### .zshrc and .gemrc
+Shell and RubyGem configurations stored at the root of the repository.
 ## Requirements
 - Neovim >= 0.9.0
 - Git

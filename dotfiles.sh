@@ -3,8 +3,10 @@ BACKUP=true
 HANDLE_ZSHRC=false
 
 update_readme() {
+  echo "Updating README.md..." >&2
   local readme="$HOME/dotfiles/README.md"
-  local nvim_plugins=$(grep "requires" ~/.config/nvim/lazy-lock.json | sed 's/"requires"://g' | tr -d '{}[],"' | sort | uniq)
+  local nvim_plugins=$(grep "requires" ~/.config/nvim/lazy-lock.json 2>/dev/null | sed 's/"requires"://g' | tr -d '{}[],"' | sort | uniq)
+
   cat >"$readme" <<EOF
 # Dotfiles
 Personal development environment configurations.
@@ -29,10 +31,13 @@ $(if [ -f ~/.config/nvim/lazy-lock.json ]; then
     cat ~/.config/nvim/lazy-lock.json | grep "\"" | cut -d'"' -f2 | sort | sed 's/^/- /'
     echo "\`\`\`"
   fi)
-### Alacritty
-Terminal emulator configuration
-### Zellij
-Terminal multiplexer configuration
+### .config Folder
+- Alacritty
+- Neovim
+- Zellij
+- Btop
+### .zshrc and .gemrc
+Shell and RubyGem configurations stored at the root of the repository.
 ## Requirements
 - Neovim >= 0.9.0
 - Git
@@ -85,11 +90,13 @@ fi
 case $ACTION in
 update)
   echo "Updating dotfiles repository..."
-  cp -r ~/.config/alacritty ~/dotfiles/
-  cp -r ~/.config/nvim ~/dotfiles/
-  cp -r ~/.config/btop ~/dotfiles/
-  cp -r ~/.config/zellij ~/dotfiles/
-  [ "$HANDLE_ZSHRC" = true ] && cp ~/.zshrc ~/dotfiles/zsh/
+  mkdir -p ~/dotfiles/.config
+  cp -r ~/.config/alacritty ~/dotfiles/.config/
+  cp -r ~/.config/nvim ~/dotfiles/.config/
+  cp -r ~/.config/btop ~/dotfiles/.config/
+  cp -r ~/.config/zellij ~/dotfiles/.config/
+  cp ~/.gemrc ~/dotfiles/.gemrc
+  [ "$HANDLE_ZSHRC" = true ] && cp ~/.zshrc ~/dotfiles/.zshrc
 
   echo "Updating README..."
   update_readme
@@ -102,19 +109,23 @@ update)
   ;;
 install)
   echo "Installing configs from dotfiles repo..."
+  mkdir -p ~/.config
+
   if $BACKUP; then
     [ -d ~/.config/alacritty ] && mv ~/.config/alacritty ~/.config/alacritty.bak
     [ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.config/nvim.bak
     [ -d ~/.config/btop ] && mv ~/.config/btop ~/.config/btop.bak
     [ -d ~/.config/zellij ] && mv ~/.config/zellij ~/.config/zellij.bak
+    [ -f ~/.gemrc ] && mv ~/.gemrc ~/.gemrc.bak
     [ "$HANDLE_ZSHRC" = true ] && [ -f ~/.zshrc ] && mv ~/.zshrc ~/.zshrc.bak
   fi
 
-  cp -r ~/dotfiles/alacritty ~/.config/
-  cp -r ~/dotfiles/nvim ~/.config/
-  cp -r ~/dotfiles/btop ~/.config/
-  cp -r ~/dotfiles/zellij ~/.config/
-  [ "$HANDLE_ZSHRC" = true ] && cp ~/dotfiles/zsh/.zshrc ~/.zshrc
+  cp -r ~/dotfiles/.config/alacritty ~/.config/
+  cp -r ~/dotfiles/.config/nvim ~/.config/
+  cp -r ~/dotfiles/.config/btop ~/.config/
+  cp -r ~/dotfiles/.config/zellij ~/.config/
+  cp ~/dotfiles/.gemrc ~/.gemrc
+  [ "$HANDLE_ZSHRC" = true ] && cp ~/dotfiles/.zshrc ~/.zshrc
 
   echo "Dotfiles have been installed!"
   $BACKUP && echo "Previous configs were backed up with .bak extension"
