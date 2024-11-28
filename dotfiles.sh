@@ -38,6 +38,7 @@ Terminal multiplexer configuration
 - Neovim >= 0.9.0
 - Git
 - Alacritty
+- Btop
 - Zellij
 - Ripgrep
 ## Notes
@@ -87,11 +88,13 @@ update)
   echo "Updating dotfiles repository..."
   mkdir -p ~/dotfiles/alacritty
   mkdir -p ~/dotfiles/nvim
+  mkdir -p ~/dotfiles/btop
   mkdir -p ~/dotfiles/zellij
   [ "$HANDLE_ZSHRC" = true ] && mkdir -p ~/dotfiles/zsh
 
   cp -r ~/.config/alacritty/* ~/dotfiles/alacritty/
   cp -r ~/.config/nvim/* ~/dotfiles/nvim/
+  cp -r ~/.config/btop/* ~/dotfiles/btop/
   cp -r ~/.config/zellij/* ~/dotfiles/zellij/
 
   if [ "$HANDLE_ZSHRC" = true ]; then
@@ -115,6 +118,7 @@ install)
   if $BACKUP; then
     [ -d ~/.config/alacritty ] && mv ~/.config/alacritty ~/.config/alacritty.bak
     [ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.config/nvim.bak
+    [ -d ~/.config/btop ] && mv ~/.config/btop ~/.config/btop.bak
     [ -d ~/.config/zellij ] && mv ~/.config/zellij ~/.config/zellij.bak
     if [ "$HANDLE_ZSHRC" = true ] && [ -f ~/.zshrc ]; then
       mv ~/.zshrc ~/.zshrc.bak
@@ -123,6 +127,7 @@ install)
 
   cp -r ~/dotfiles/alacritty ~/.config/alacritty
   cp -r ~/dotfiles/nvim ~/.config/nvim
+  cp -r ~/dotfiles/btop ~/.config/btop
   cp -r ~/dotfiles/zellij ~/.config/zellij
 
   if [ "$HANDLE_ZSHRC" = true ]; then
