@@ -1,4 +1,3 @@
-
 local function is_ruby_version_supported()
   local version = vim.fn.systemlist("ruby -e 'puts RUBY_VERSION'")[1]
   if version then

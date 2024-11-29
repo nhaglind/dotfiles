@@ -59,7 +59,6 @@ Current plugins:
 - render-markdown.nvim
 - ror.nvim
 - snacks.nvim
-- supermaven-nvim
 - telescope-fzf-native.nvim
 - telescope.nvim
 - todo-comments.nvim
