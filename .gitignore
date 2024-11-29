@@ -3,6 +3,7 @@
 *.swp
 *.swo
 *.tmp
+*.log
 
 # Ignore Neovim cache and backup files
 .cache/
