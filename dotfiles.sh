@@ -37,7 +37,8 @@ $(if [ -f ~/.config/nvim/lazy-lock.json ]; then
 - Zellij
 - Btop
 ### .zshrc and .gemrc
-Shell and RubyGem configurations stored at the root of the repository.
+Shell and RubyGem configurations stored at the root of the repository. 
+Those have additional requirements such as bat and eza.
 ## Requirements
 - Neovim >= 0.9.0
 - Git
