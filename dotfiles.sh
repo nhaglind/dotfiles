@@ -1,55 +1,7 @@
 #!/bin/bash
+
 BACKUP=true
 HANDLE_ZSHRC=false
-
-update_readme() {
-  echo "Updating README.md..." >&2
-  local readme="$HOME/dotfiles/README.md"
-  local nvim_plugins=$(grep "requires" ~/.config/nvim/lazy-lock.json 2>/dev/null | sed 's/"requires"://g' | tr -d '{}[],"' | sort | uniq)
-
-  cat >"$readme" <<EOF
-# Dotfiles
-Personal development environment configurations.
-## Installation
-\`\`\`bash
-git clone https://github.com/nhaglind/dotfiles.git ~/dotfiles
-chmod +x ~/dotfiles/dotfiles.sh
-# Install dotfiles (creates backups of existing configs by default)
-./dotfiles.sh -i
-# Install without backups
-./dotfiles.sh -i --no-backup
-# Update repository with current configs
-./dotfiles.sh -u
-# Include zshrc in operations
-./dotfiles.sh -u --zshrc
-\`\`\`
-## Contents
-### Neovim (LazyVim)
-$(if [ -f ~/.config/nvim/lazy-lock.json ]; then
-    echo "Current plugins:"
-    echo "\`\`\`"
-    cat ~/.config/nvim/lazy-lock.json | grep "\"" | cut -d'"' -f2 | sort | sed 's/^/- /'
-    echo "\`\`\`"
-  fi)
-### .config Folder
-- Alacritty
-- Neovim
-- Zellij
-- Btop
-### .zshrc and .gemrc
-Shell and RubyGem configurations stored at the root of the repository. 
-Those have additional requirements such as bat and eza.
-## Requirements
-- Neovim >= 0.9.0
-- Git
-- Alacritty
-- Btop
-- Zellij
-- Ripgrep
-## Notes
-- Configs are backed up with .bak extension before installation by default.
-EOF
-}
 
 usage() {
   echo "Usage: $0 [-u|-i] [--no-backup] [--zshrc]"
@@ -99,9 +51,6 @@ update)
   cp ~/.gemrc ~/dotfiles/.gemrc
   cp ~/.gitignore ~/dotfiles/.gitignore
   [ "$HANDLE_ZSHRC" = true ] && cp ~/.zshrc ~/dotfiles/.zshrc
-
-  echo "Updating README..."
-  update_readme
 
   cd ~/dotfiles
   git add .
